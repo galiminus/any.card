@@ -52,3 +52,5 @@ gem 'textacular', "~> 3.2.0"
 
 gem "rack-attack"
 
+gem "rails_12factor"
+
