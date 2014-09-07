@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'bootstrap-variables'
+ *= require_tree .
+ *= require_self
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    padding-bottom: 30px;
+}
+
+br {
+    display: none;
+}
+
+#idea_description {
+    height: 182px;
+}
+
+a.navbar-brand {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 210%;
+    padding-right: 0px;
+}
+
+label {
+    font-weight: normal;
+}
+.nav-by {
+    margin-top: 19px;
+    margin-left: 5px;
+}
+
+.panel .label {
+    text-transform: lowercase;
+}
+
+.panel .from {
+    text-transform: lowercase;
+}
+
+h4 {
+    font-size: 10px;
+    color: #888;
+    margin-top: 14px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+a.edit-link {
+    margin-right: 10px;
+    color: #428bca;
+}
+
+.search-form {
+    padding-bottom: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.grade-radio {
+    width: 100%;
+    label {
+        width: 10%;
+        &:last-child {
+            width: 12%;
+        }
+    }
+}
+
+.label-link {
+    color: #fff;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.form-illustration {
+    border: 1px solid #888;
+}
+
+@media (max-width: 767px) {
+    .search-form.pull-right, .search-form .form-group.pull-right {
+        float: none !important;
+        button {
+            min-width: 100%;
+        }
+    }
+}

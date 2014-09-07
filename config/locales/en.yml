@@ -1,0 +1,31 @@
+en:
+  layouts:
+    application:
+      title: any.card
+      subtitle: ''
+      log_out: log-out
+      sign_in: sign-in
+      sign_up: sign-up
+  ideas:
+    index:
+      search:
+        placeholder: Search
+        only_mine: only mine
+        most_recent: most recent
+        hardest: more difficult
+        easiest: less difficult
+      card:
+        delete: delete
+        edit: edit
+        material: material
+        min_partners: minimal team size
+        idea_from: Idea from
+    form:
+      title: Title or quick description of your idea
+      description: Full description
+      tags: A few tags to describe your idea (separated by commas)
+      material: Material needed (separated by commas)
+      min_partners: Minimum team size
+      grade: From 1 out of 10, how difficult is your idea?
+      image: seal.jpg
+      submit: SUBMIT

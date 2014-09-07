@@ -1,0 +1,81 @@
+<div class="row">
+  <ul class="form-group list-inline pull-left col-md-8">
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to t(".search.only_mine"), ideas_path(user: current_user.id) %>
+    </li>
+    <% end %>
+    <li>
+      <%= link_to t(".search.most_recent"), ideas_path(order_by: :created_at) %>
+    </li>
+    <li>
+      <%= link_to t(".search.hardest"), ideas_path(order_by: :grade) %>
+    </li>
+    <li>
+      <%= link_to t(".search.easiest"), ideas_path(order_by: :grade, order: :asc) %>
+    </li>
+  </ul>
+  <form class="search-form col-md-4 form-inline pull-right" role="search" action="<%= ideas_path %>" method="get">
+    <div class="form-group pull-right">
+      <input name="q" type="text" class="form-control" placeholder="<%= t('.search.placeholder') %>" value="<%= params[:q] %>">
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+
+<div id="masonry-container" class="row">
+  <% @ideas.each do |idea| %>
+  <div class="item col-md-4 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <b><%= idea.title %></b>
+          <span class="badge pull-right"><%= idea.grade %></span>
+          <% if current_user == idea.user %>
+          <%= link_to t(".card.delete"), idea_path(idea), 'data-confirm' => "Delete #{idea.title}?", 'method' => :delete, 'class' => "pull-right edit-link" %>
+          <%= link_to t(".card.edit"), edit_idea_path(idea), class: "pull-right edit-link" %>
+          <% end %>
+        </h3>
+      </div>
+      <div class="panel-body idea-card">
+        <ul class="list-inline">
+          <% idea.tags.split(".,").map(&:strip).each do |tag| %>
+          <li>
+            <a class="label-link" href="<%= ideas_path(q: tag) %>">
+              <span class="label label-danger">
+                <%= tag %>
+              </span>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+        <p class="description">
+          <%= idea.description %>
+        </p>
+        <% if idea.materials.present? %>
+        <h4><%= t(".card.material") %></h4>
+        <ul class="list-inline">
+          <% idea.materials.split(".,").map(&:strip).each do |material| %>
+          <li>
+            <span class="label label-default">
+              <%= material %>
+            </span>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
+        <h4><%= t(".card.min_partners") %></h4>
+        <%= idea.min_partners %>
+        <h4><%= t(".card.idea_from") %></h4>
+        <span class="from"><%= idea.user.login %></span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <%= paginate @ideas %>
+</div>
+

@@ -1,0 +1,62 @@
+<%= form_for(@idea) do |f| %>
+<div class="row">
+  <% if @idea.errors.any? %>
+  <div class="col-md-12 col-xs-12 alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <ul class="list-unstyled">
+      <% @idea.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+        <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="col-md-8 col-xs-12">
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="form-group">
+          <%= f.label :title, t(".title") %><br>
+          <%= f.text_field :title, required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, t(".description") %><br>
+          <%= f.text_area :description, required: true, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="form-group">
+          <%= f.label :tags, t(".tags") %>
+          <%= f.text_field :tags, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :materials, t(".material") %>
+          <%= f.text_field :materials, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :min_partners, t(".min_partners") %>
+          <%= f.number_field :min_partners, class: 'form-control', value: 0 %>
+        </div>
+        <div class="form-group">
+          <label><%= t(".grade") %></label>
+          <div class="btn-group grade-radio" data-toggle="buttons">
+            <% for grade_value in 1..10 %>
+            <label class="btn btn-default btn-grade-<%= grade_value %> <% if @idea.grade == grade_value %>active<% end %>" >
+              <input type="radio" name="idea[grade]" id="idea_grade" value="<%= grade_value %>" <% if @idea.grade == grade_value %>checked<% end %> ><%= grade_value %></input>
+            </label>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-xs-12">
+        <%= f.submit t(".submit"), class: 'btn btn-primary btn-lg btn-block pull-right' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 hidden-xs">
+    <img class="form-illustration" src="<%= image_path t('.image') %>" />
+  </div>
+</div>
+
+
+
+<% end %>
