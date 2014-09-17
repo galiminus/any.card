@@ -40,7 +40,7 @@
       </div>
       <div class="panel-body idea-card">
         <ul class="list-inline">
-          <% idea.tags.split(".,").map(&:strip).each do |tag| %>
+          <% idea.tags.split(",").map(&:strip).each do |tag| %>
           <li>
             <a class="label-link" href="<%= ideas_path(q: tag) %>">
               <span class="label label-danger">
@@ -56,7 +56,7 @@
         <% if idea.materials.present? %>
         <h4><%= t(".card.material") %></h4>
         <ul class="list-inline">
-          <% idea.materials.split(".,").map(&:strip).each do |material| %>
+          <% idea.materials.split(",").map(&:strip).each do |material| %>
           <li>
             <span class="label label-default">
               <%= material %>
