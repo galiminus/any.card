@@ -36,6 +36,7 @@
           <%= link_to t(".card.delete"), idea_path(idea), 'data-confirm' => "Delete #{idea.title}?", 'method' => :delete, 'class' => "pull-right edit-link" %>
           <%= link_to t(".card.edit"), edit_idea_path(idea), class: "pull-right edit-link" %>
           <% end %>
+          <div class="clearfix"></div>
         </h3>
       </div>
       <div class="panel-body idea-card">
